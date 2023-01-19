@@ -39,14 +39,14 @@ class MyNode(Node):
         super().__init__("custom_planner_test")
 
         # Publisher decleration
-        self.Trajectory = self.create_publisher(Trajectory, "custom_trajectory_topic", 10)
-        self.Turn_Signal = self.create_publisher(TurnIndicatorsCommand, "custom_turn_indicator_topic", 10)
-        self.Hazard_Signal = self.create_publisher(HazardLightsCommand, "custom_hazard_lights_topic", 10)
+        self.Trajectory = self.create_publisher(Trajectory, "/planning/trajectory", 10)
+        self.Turn_Signal = self.create_publisher(TurnIndicatorsCommand, "/planning/turn_indicators_cmd", 10)
+        self.Hazard_Signal = self.create_publisher(HazardLightsCommand, "/planning/hazard_lights_cmd", 10)
 
         # Subscriber decleration
         self.Vechicle_Kinematics = self.create_subscription(Odometry, "/localization/kinematic_state", self.listener_callback, 10)
         self.Map_Data = self.create_subscription(HADMapBin, "/map/vector_map", self.listener_callback, 10)
-        self.Detected_Obj = self.create_subscription(PredictedObjects, "perception/object_recognition/objects", self.listener_callback, 10)
+        self.Detected_Obj = self.create_subscription(PredictedObjects, "/perception/object_recognition/objects", self.listener_callback, 10)
         self.Detected_Obs = self.create_subscription(PointCloud2, "/perception/obstacle_segmentation/pointcloud", self.listener_callback, 10)
         self.occupancy_grid_map_1 = self.create_subscription(OccupancyGrid, "/perception/occupancy_grid_map/map", self.listener_callback, 10)
         self.Traffic_Lights = self.create_subscription(TrafficSignalArray, "/perception/traffic_light_recognition/traffic_signals", self.listener_callback, 10)
