@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="custom_planner" exec="custom_planner" namespace="custom_planner_node"/>
+</launch>
