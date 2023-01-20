@@ -39,9 +39,9 @@ class MyNode(Node):
         super().__init__("custom_planner_test")
 
         # Publisher decleration
-        self.Trajectory = self.create_publisher(Trajectory, "/planning/trajectory", 10)
-        self.Turn_Signal = self.create_publisher(TurnIndicatorsCommand, "/planning/turn_indicators_cmd", 10)
-        self.Hazard_Signal = self.create_publisher(HazardLightsCommand, "/planning/hazard_lights_cmd", 10)
+        self.Trajectory = self.create_publisher(Trajectory, "/custom_planner_node/custom_trajectory_topic", 10)
+        self.Turn_Signal = self.create_publisher(TurnIndicatorsCommand, "/custom_planner_node/custom_turn_indicator_topic", 10)
+        self.Hazard_Signal = self.create_publisher(HazardLightsCommand, "/custom_planner_node/custom_hazard_lights_topic", 10)
 
         # Subscriber decleration
         self.Vechicle_Kinematics = self.create_subscription(Odometry, "/localization/kinematic_state", self.listener_callback, 10)
