@@ -1,3 +1,7 @@
 <launch>
-  <node pkg="custom_planner" exec="custom_planner" namespace="custom_planner_node"/>
+  <node pkg="custom_planner" exec="custom_planner" namespace="custom_planner_node">
+    <remap from="/custom_planner_node/custom_hazard_lights_topic" to="/planning/hazard_lights_cmd" />
+    <remap from="/custom_planner_node/custom_turn_indicator_topic" to="/planning/turn_indicators_cmd" />
+    <remap from="/custom_planner_node/custom_trajectory_topic" to="/planning/trajectory" />
+  </node>
 </launch>
